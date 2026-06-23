@@ -64,6 +64,7 @@ export default function HomePage() {
         </div>
 
         <div className="hero-showcase">
+          <div className="hero-showcase__glow" />
           {heroMeal ? (
             <img
               src={heroMeal.image}
@@ -76,6 +77,20 @@ export default function HomePage() {
               <img key={item.id} src={item.image} alt={item.name} />
             ))}
           </div>
+          {heroSides[0] ? (
+            <img
+              src={heroSides[0].image}
+              alt={heroSides[0].name}
+              className="hero-showcase__tray hero-showcase__tray--top"
+            />
+          ) : null}
+          {heroSides[1] ? (
+            <img
+              src={heroSides[1].image}
+              alt={heroSides[1].name}
+              className="hero-showcase__tray hero-showcase__tray--bottom"
+            />
+          ) : null}
           <div className="hero-burst">
             <span>Hot &amp;</span>
             <strong>Crispy</strong>
@@ -83,6 +98,15 @@ export default function HomePage() {
           <div className="hero-note">
             <span>Call</span>
             <strong>{BRAND.phone}</strong>
+          </div>
+          <div className="hero-mobile-promo">
+            <div>
+              <p>Hot, Crispy &amp;</p>
+              <strong>Made For You!</strong>
+            </div>
+            <Link to="/menu" className="primary-button">
+              Order Now
+            </Link>
           </div>
         </div>
       </section>

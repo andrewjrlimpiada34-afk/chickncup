@@ -14,6 +14,7 @@ export default function FoodCard({ item, onAddToCart }) {
       </div>
       <div className="food-card__body">
         <div className="food-card__meta">
+          <span className="food-card__code-inline">{item.code}</span>
           <span className={item.available ? "status-pill" : "status-pill sold-out"}>
             {item.available ? "Available" : "Sold Out"}
           </span>

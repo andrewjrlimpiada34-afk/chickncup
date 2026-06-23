@@ -41,7 +41,10 @@ export default function Navbar() {
           </button>
           <Link to="/" className="navbar__brand">
             <span className="brand-mark">
+              <span className="brand-mark__crosshair brand-mark__crosshair--h" />
+              <span className="brand-mark__crosshair brand-mark__crosshair--v" />
               <span className="brand-mark__ring" />
+              <span className="brand-mark__label">CHICK</span>
               <span className="brand-mark__core">CNC</span>
             </span>
             <span className="brand-copy">
@@ -59,7 +62,10 @@ export default function Navbar() {
           <div className="navbar__desktop-brand">
             <Link to="/" className="navbar__brand">
               <span className="brand-mark">
+                <span className="brand-mark__crosshair brand-mark__crosshair--h" />
+                <span className="brand-mark__crosshair brand-mark__crosshair--v" />
                 <span className="brand-mark__ring" />
+                <span className="brand-mark__label">CHICK</span>
                 <span className="brand-mark__core">CNC</span>
               </span>
               <span className="brand-copy">
