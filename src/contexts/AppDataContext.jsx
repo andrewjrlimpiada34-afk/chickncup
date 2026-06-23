@@ -43,29 +43,33 @@ export function AppDataProvider({ children }) {
       error,
       refreshData: hydrate,
       addMenuItem: async (payload) => {
-        const nextItems = await createMenuItem(payload);
-        setMenuItems(nextItems);
+        const createdItem = await createMenuItem(payload);
+        setMenuItems((current) => [...current, createdItem]);
         addToast("Menu item added.", "success");
       },
       editMenuItem: async (itemId, payload) => {
-        const nextItems = await updateMenuItem(itemId, payload);
-        setMenuItems(nextItems);
+        const updatedItem = await updateMenuItem(itemId, payload);
+        setMenuItems((current) =>
+          current.map((item) => (item.id === itemId ? updatedItem : item))
+        );
         addToast("Menu item updated.", "success");
       },
       removeMenuItem: async (itemId) => {
-        const nextItems = await deleteMenuItem(itemId);
-        setMenuItems(nextItems);
+        await deleteMenuItem(itemId);
+        setMenuItems((current) => current.filter((item) => item.id !== itemId));
         addToast("Menu item deleted.", "success");
       },
       placeOrder: async (payload) => {
-        const nextOrders = await createOrder(payload);
-        setOrders(nextOrders);
+        const createdOrder = await createOrder(payload);
+        setOrders((current) => [createdOrder, ...current]);
         addToast("Order placed successfully.", "success");
-        return nextOrders[0];
+        return createdOrder;
       },
       changeOrderStatus: async (orderId, status) => {
-        const nextOrders = await updateOrderStatus(orderId, status);
-        setOrders(nextOrders);
+        const updatedOrder = await updateOrderStatus(orderId, status);
+        setOrders((current) =>
+          current.map((order) => (order.id === orderId ? updatedOrder : order))
+        );
         addToast(`Order moved to ${status}.`, "success");
       },
     }),

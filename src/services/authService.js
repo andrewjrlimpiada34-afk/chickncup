@@ -1,4 +1,9 @@
-import { apiRequest } from "../api/client";
+import {
+  apiRequest,
+  clearAuthToken,
+  isApiConfigured,
+  setAuthToken,
+} from "../api/client";
 import { loadFromStorage, saveToStorage } from "../utils/storage";
 
 const USERS_KEY = "chickncup_users";
@@ -30,8 +35,17 @@ function persistUsers(users) {
   return users;
 }
 
+function createMockToken(user) {
+  return `mock-token-${user.id}`;
+}
+
 export async function login(credentials) {
-  await apiRequest("/auth/login", { method: "POST", body: credentials });
+  if (isApiConfigured()) {
+    const response = await apiRequest("/auth/login", { method: "POST", body: credentials });
+    setAuthToken(response.token);
+    return response.user;
+  }
+
   const users = getUsers();
   const matchedUser = users.find(
     (user) =>
@@ -43,11 +57,17 @@ export async function login(credentials) {
     throw new Error("Invalid email or password.");
   }
 
+  setAuthToken(createMockToken(matchedUser));
   return matchedUser;
 }
 
 export async function register(payload) {
-  await apiRequest("/auth/register", { method: "POST", body: payload });
+  if (isApiConfigured()) {
+    const response = await apiRequest("/auth/register", { method: "POST", body: payload });
+    setAuthToken(response.token);
+    return response.user;
+  }
+
   const users = getUsers();
 
   if (users.some((user) => user.email.toLowerCase() === payload.email.toLowerCase())) {
@@ -61,17 +81,24 @@ export async function register(payload) {
   };
 
   persistUsers([...users, newUser]);
+  setAuthToken(createMockToken(newUser));
   return newUser;
 }
 
 export async function continueWithGoogle(mode = "login") {
-  await apiRequest(`/auth/google?mode=${mode}`, { method: "POST" });
+  if (isApiConfigured()) {
+    const response = await apiRequest(`/auth/google?mode=${mode}`, { method: "POST" });
+    setAuthToken(response.token);
+    return response.user;
+  }
+
   const users = getUsers();
   const existingUser = users.find(
     (user) => user.email.toLowerCase() === "google.user@chickncup.demo"
   );
 
   if (existingUser) {
+    setAuthToken(createMockToken(existingUser));
     return existingUser;
   }
 
@@ -86,15 +113,24 @@ export async function continueWithGoogle(mode = "login") {
   };
 
   persistUsers([...users, newUser]);
+  setAuthToken(createMockToken(newUser));
   return newUser;
 }
 
 export async function updateProfile(userId, updates) {
-  await apiRequest(`/users/${userId}`, { method: "PATCH", body: updates });
+  if (isApiConfigured()) {
+    const response = await apiRequest("/users/me", { method: "PATCH", body: updates });
+    return response.user;
+  }
+
   const users = getUsers();
   const nextUsers = users.map((user) =>
     user.id === userId ? { ...user, ...updates } : user
   );
   persistUsers(nextUsers);
   return nextUsers.find((user) => user.id === userId);
+}
+
+export function logout() {
+  clearAuthToken();
 }

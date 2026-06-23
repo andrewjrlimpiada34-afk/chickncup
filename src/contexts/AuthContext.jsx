@@ -3,6 +3,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 import {
   continueWithGoogle,
   login,
+  logout as logoutService,
   register,
   updateProfile,
 } from "../services/authService";
@@ -49,6 +50,7 @@ export function AuthProvider({ children }) {
           "Signed in with Google successfully."
         ),
       logout: () => {
+        logoutService();
         setUser(null);
         addToast("Logged out successfully.", "success");
       },
