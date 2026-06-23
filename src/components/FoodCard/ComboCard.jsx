@@ -6,12 +6,13 @@ export default function ComboCard({ item, onAddToCart }) {
       <img src={item.image} alt={item.name} className="combo-card__image" />
       <div className="combo-card__body">
         <div>
-          <p className="eyebrow">{item.code}</p>
+          <span className="combo-card__code">{item.code}</span>
           <h3>{item.name}</h3>
-          <p>{item.items.join(" + ")} with rice included.</p>
+          <p>{item.items.join(" + ")}</p>
+          <small>Rice included in every meal</small>
         </div>
         <div className="combo-card__footer">
-          <strong>{formatCurrency(item.price)}</strong>
+          <strong className="price-mark">{formatCurrency(item.price)}</strong>
           <button
             type="button"
             className="primary-button"

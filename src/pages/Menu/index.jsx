@@ -36,18 +36,20 @@ export default function MenuPage() {
   }
 
   return (
-    <div className="stack-xl">
-      <section className="menu-banner">
-        <p className="eyebrow">Menu Board</p>
-        <h1>Pick your meal, combo, and flavor hit</h1>
-        <p>
-          Browse bold chicken meals and cleanly organized combos, just like a modern
-          counter menu board.
-        </p>
+    <div className="menu-page">
+      <section className="menu-page__hero">
+        <div className="menu-page__hero-copy">
+          <p className="eyebrow">Menu Board</p>
+          <h1>Hot, crispy and built like a counter display</h1>
+          <p>
+            Search fast, filter by category, and order from a menu designed to feel
+            like the actual Chick N' Cup poster on both desktop and mobile.
+          </p>
+        </div>
       </section>
 
-      <section className="section-card">
-        <div className="toolbar">
+      <section className="menu-page__controls">
+        <div className="toolbar toolbar--menu">
           <SearchBar value={search} onChange={setSearch} />
           <CategoryFilter
             options={CATEGORY_OPTIONS}
@@ -55,44 +57,50 @@ export default function MenuPage() {
             onChange={setCategory}
           />
         </div>
+      </section>
 
-        {filteredItems.length === 0 ? (
-          <EmptyState
-            title="No menu items found"
-            description="Try another keyword or switch categories."
-          />
-        ) : (
-          <>
-            <div className="section-heading">
+      {filteredItems.length === 0 ? (
+        <EmptyState
+          title="No menu items found"
+          description="Try another keyword or switch categories."
+        />
+      ) : (
+        <>
+          <section className="menu-page__section">
+            <div className="section-heading section-heading--poster">
               <div>
-                <p className="eyebrow">Chicken Meal</p>
+                <p className="section-label">Chicken Meal</p>
                 <h2>Singles</h2>
               </div>
+              <span className="section-link">View all</span>
             </div>
-            <div className="grid-cards">
+            <div className="food-card-grid">
               {filteredItems
                 .filter((item) => item.type === "single")
                 .map((item) => (
                   <FoodCard key={item.id} item={item} onAddToCart={addToCart} />
                 ))}
             </div>
+          </section>
 
-            <div className="section-heading top-space">
+          <section className="menu-page__section">
+            <div className="section-heading section-heading--poster">
               <div>
-                <p className="eyebrow">Chick N' Match Combo</p>
-                <h2>Combos</h2>
+                <p className="section-label">Chick N' Match (Combos)</p>
+                <h2>Combo meals</h2>
               </div>
+              <span className="section-link">View all combos</span>
             </div>
-            <div className="combo-grid">
+            <div className="combo-strip">
               {filteredItems
                 .filter((item) => item.type === "combo")
                 .map((item) => (
                   <ComboCard key={item.id} item={item} onAddToCart={addToCart} />
                 ))}
             </div>
-          </>
-        )}
-      </section>
+          </section>
+        </>
+      )}
     </div>
   );
 }
