@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420">
+  <rect width="640" height="420" rx="28" fill="#0d0d0d"/>
+  <circle cx="170" cy="134" r="94" fill="#ffffff" fill-opacity=".12"/>
+  <circle cx="170" cy="134" r="76" fill="#b90d16"/>
+  <rect x="126" y="212" width="22" height="94" rx="11" fill="#f1e6d8"/>
+  <rect x="154" y="212" width="22" height="94" rx="11" fill="#f1e6d8"/>
+  <text x="274" y="168" fill="#ffffff" font-family="Arial" font-size="42" font-weight="700">CHICKEN</text>
+  <text x="274" y="222" fill="#ffffff" font-family="Arial" font-size="42" font-weight="700">LOLLIPOP</text>
+  <text x="274" y="278" fill="#ffb6b6" font-family="Arial" font-size="22">Fun, crispy, snackable</text>
+</svg>

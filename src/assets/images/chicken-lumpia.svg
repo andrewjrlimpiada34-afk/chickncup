@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420">
+  <rect width="640" height="420" rx="28" fill="#121212"/>
+  <rect x="52" y="60" width="220" height="300" rx="28" fill="#b90d16"/>
+  <text x="88" y="146" fill="#ffffff" font-family="Arial" font-size="42" font-weight="700">CHICKEN</text>
+  <text x="88" y="204" fill="#ffffff" font-family="Arial" font-size="42" font-weight="700">LUMPIA</text>
+  <text x="88" y="276" fill="#ffe0a8" font-family="Arial" font-size="22">Golden savory rolls</text>
+  <circle cx="452" cy="186" r="128" fill="#f3e6cf"/>
+  <text x="402" y="198" fill="#0b0b0b" font-family="Arial" font-size="30" font-weight="700">CL</text>
+</svg>

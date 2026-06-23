@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420">
+  <rect width="640" height="420" rx="28" fill="#0b0b0b"/>
+  <circle cx="510" cy="98" r="96" fill="#b90d16"/>
+  <rect x="48" y="62" width="264" height="264" rx="28" fill="#f5f1ec"/>
+  <text x="80" y="150" fill="#0b0b0b" font-family="Arial" font-size="42" font-weight="700">CORDON</text>
+  <text x="80" y="204" fill="#0b0b0b" font-family="Arial" font-size="42" font-weight="700">BLEU</text>
+  <text x="80" y="270" fill="#b90d16" font-family="Arial" font-size="22">Crispy stuffed chicken</text>
+  <rect x="356" y="228" width="202" height="118" rx="24" fill="#ffffff" fill-opacity=".12"/>
+  <text x="386" y="298" fill="#ffffff" font-family="Arial" font-size="28" font-weight="700">CB</text>
+</svg>

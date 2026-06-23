@@ -1,0 +1,747 @@
+:root {
+  --bg: #0b0b0b;
+  --panel: #151515;
+  --panel-soft: #1d1d1d;
+  --text: #fff7f1;
+  --muted: #c4bdb7;
+  --accent: #d7141f;
+  --accent-strong: #ff2e3d;
+  --line: rgba(255, 255, 255, 0.1);
+  --success: #1f9d55;
+  --warning: #f59e0b;
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top right, rgba(215, 20, 31, 0.18), transparent 24%),
+    linear-gradient(180deg, #090909 0%, #121212 100%);
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-shell {
+  width: min(1200px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1.25rem 0 3rem;
+  flex: 1;
+}
+
+.stack-xl,
+.stack-md,
+.stack-sm {
+  display: grid;
+}
+
+.stack-xl {
+  gap: 1.5rem;
+}
+
+.stack-md {
+  gap: 1rem;
+}
+
+.stack-sm {
+  gap: 0.75rem;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(10, 10, 10, 0.92);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(14px);
+}
+
+.navbar__brand a,
+.footer,
+.section-heading,
+.summary-row,
+.order-card__header,
+.food-card__footer,
+.combo-card__footer,
+.cart-item,
+.cart-item__actions,
+.quantity-control,
+.hero-actions,
+.toolbar,
+.admin-table__head,
+.admin-table__row,
+.row-actions,
+.modal-header,
+.stats-grid,
+.hero-board,
+.checkout-layout,
+.cart-layout,
+.admin-layout {
+  display: flex;
+}
+
+.navbar__brand a {
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.brand-mark {
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), #7a0d16);
+  font-weight: 800;
+}
+
+.navbar__brand p,
+.footer p,
+.helper-text,
+.food-card p,
+.combo-card p,
+.order-card__body p,
+.details-card__body p,
+.empty-state p,
+.stat-card span,
+.hero-section p,
+.menu-banner p {
+  color: var(--muted);
+}
+
+.menu-toggle {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  padding: 0.7rem 1rem;
+}
+
+.navbar__links {
+  position: absolute;
+  top: 100%;
+  left: 1rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.navbar__links.open {
+  display: flex;
+}
+
+.navbar__links a,
+.navbar__links button {
+  padding: 0.8rem 0.9rem;
+  border-radius: 0.8rem;
+}
+
+.navbar__links .active {
+  background: rgba(215, 20, 31, 0.16);
+  color: #fff;
+}
+
+.cart-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-link span,
+.status-pill,
+.order-status {
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+
+.cart-link span {
+  background: var(--accent);
+}
+
+.hero-section,
+.details-card,
+.admin-layout,
+.cart-layout,
+.checkout-layout {
+  gap: 1.25rem;
+}
+
+.hero-section {
+  display: grid;
+  padding: 1.5rem;
+  border-radius: 1.75rem;
+  background:
+    linear-gradient(135deg, rgba(215, 20, 31, 0.2), rgba(0, 0, 0, 0.88)),
+    #101010;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.hero-section__content h1,
+.menu-banner h1,
+.auth-card h1,
+.details-card__body h1,
+.section-card h1 {
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  margin: 0.2rem 0 0.6rem;
+}
+
+.hero-tagline {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.hero-board {
+  flex-direction: column;
+}
+
+.hero-board__card,
+.section-card,
+.food-card,
+.combo-card,
+.order-card,
+.empty-state,
+.auth-card,
+.details-card,
+.admin-table__row,
+.stat-card {
+  border: 1px solid var(--line);
+  border-radius: 1.5rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.18));
+  box-shadow: var(--shadow);
+}
+
+.hero-board__card {
+  padding: 1rem;
+}
+
+.hero-board__card.highlight {
+  background: linear-gradient(135deg, rgba(215, 20, 31, 0.9), rgba(111, 8, 15, 0.92));
+}
+
+.section-card,
+.auth-card,
+.details-card,
+.empty-state {
+  padding: 1.25rem;
+}
+
+.menu-banner {
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(215, 20, 31, 0.14));
+  border: 1px solid var(--line);
+}
+
+.section-heading,
+.summary-row,
+.food-card__footer,
+.combo-card__footer,
+.order-card__header,
+.admin-table__head,
+.admin-table__row {
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  color: #ffb9be;
+}
+
+.grid-cards,
+.combo-grid,
+.stats-grid,
+.order-admin-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.food-card,
+.combo-card,
+.order-card {
+  overflow: hidden;
+}
+
+.food-card__image,
+.combo-card__image,
+.details-card__image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: #1b1b1b;
+}
+
+.food-card__body,
+.combo-card__body,
+.order-card__body {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1rem;
+}
+
+.food-card__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.status-pill {
+  background: rgba(31, 157, 85, 0.16);
+  color: #97f0b3;
+}
+
+.status-pill.sold-out {
+  background: rgba(245, 158, 11, 0.16);
+  color: #ffcc75;
+}
+
+.food-card__actions,
+.quantity-control {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.primary-button,
+.secondary-button,
+.ghost-button,
+.pill-button {
+  border-radius: 999px;
+  padding: 0.85rem 1.2rem;
+  border: 1px solid transparent;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.primary-button:hover,
+.secondary-button:hover,
+.ghost-button:hover,
+.pill-button:hover {
+  transform: translateY(-1px);
+}
+
+.primary-button {
+  background: linear-gradient(135deg, var(--accent-strong), var(--accent));
+  color: white;
+}
+
+.secondary-button,
+.pill-button.active {
+  background: #fff7f1;
+  color: #111;
+}
+
+.ghost-button,
+.pill-button {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--line);
+}
+
+.danger-button {
+  color: #ff8f95;
+}
+
+.search-bar,
+.form-grid label {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.search-bar input,
+.form-grid input,
+.form-grid textarea,
+.form-grid select {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+}
+
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.toolbar {
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cart-item {
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.cart-item img {
+  width: 88px;
+  height: 88px;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+.cart-item__body {
+  display: grid;
+  gap: 1rem;
+  flex: 1;
+}
+
+.quantity-control button {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+}
+
+.cart-layout,
+.checkout-layout {
+  flex-direction: column;
+}
+
+.summary-row {
+  padding: 0.3rem 0;
+}
+
+.full-width-button,
+.full-width {
+  width: 100%;
+}
+
+.form-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.auth-page {
+  display: grid;
+  place-items: center;
+  min-height: 70vh;
+}
+
+.auth-card {
+  width: min(560px, 100%);
+}
+
+.loading-state,
+.empty-state {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+.spinner {
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 3px solid rgba(255, 255, 255, 0.18);
+  border-top-color: var(--accent-strong);
+  border-radius: 999px;
+  animation: spin 0.85s linear infinite;
+}
+
+.toast-stack {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  display: grid;
+  gap: 0.75rem;
+  z-index: 50;
+}
+
+.toast {
+  border: 0;
+  padding: 0.95rem 1rem;
+  min-width: 260px;
+  border-radius: 1rem;
+  color: white;
+  text-align: left;
+  box-shadow: var(--shadow);
+}
+
+.toast--success {
+  background: linear-gradient(135deg, #177c45, #125f36);
+}
+
+.toast--error {
+  background: linear-gradient(135deg, #b91c1c, #7f1010);
+}
+
+.toast--info {
+  background: linear-gradient(135deg, #2a2a2a, #181818);
+}
+
+.order-status {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.order-status--pending {
+  color: #ffcc75;
+}
+
+.order-status--accepted,
+.order-status--preparing,
+.order-status--out-for-delivery {
+  color: #fca5a5;
+}
+
+.order-status--ready-for-pickup,
+.order-status--completed {
+  color: #97f0b3;
+}
+
+.order-status--cancelled {
+  color: #d1d5db;
+}
+
+.admin-layout {
+  min-height: 100vh;
+}
+
+.admin-sidebar {
+  min-width: 280px;
+  padding: 1.5rem;
+  border-right: 1px solid var(--line);
+  background: #0d0d0d;
+}
+
+.admin-sidebar__nav {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.admin-sidebar__nav a {
+  padding: 0.9rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid var(--line);
+}
+
+.admin-sidebar__nav .active {
+  background: rgba(215, 20, 31, 0.16);
+}
+
+.admin-content {
+  flex: 1;
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1.25rem 0 3rem;
+}
+
+.admin-table {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.admin-table__head {
+  padding: 0 1rem;
+  color: #ffb9be;
+}
+
+.admin-table__row {
+  padding: 1rem;
+}
+
+.row-actions {
+  gap: 0.5rem;
+}
+
+.stats-grid {
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.stat-card {
+  flex: 1 1 200px;
+  padding: 1rem;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 40;
+}
+
+.modal-card {
+  width: min(760px, 100%);
+  padding: 1.25rem;
+  border-radius: 1.5rem;
+  border: 1px solid var(--line);
+  background: #141414;
+}
+
+.checkbox-row {
+  display: flex !important;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.checkbox-row input {
+  width: auto;
+}
+
+.compact-list,
+.order-card ul {
+  margin: 0;
+  padding-left: 1rem;
+  color: var(--muted);
+}
+
+.footer {
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1rem 2rem;
+  border-top: 1px solid var(--line);
+  width: min(1200px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.top-space {
+  margin-top: 1rem;
+}
+
+.error-panel {
+  color: #ffb4b4;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 768px) {
+  .menu-toggle {
+    display: none;
+  }
+
+  .navbar {
+    padding-inline: max(1rem, calc((100vw - 1200px) / 2 + 1rem));
+  }
+
+  .navbar__links {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .hero-section {
+    grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.8fr);
+    padding: 2rem;
+  }
+
+  .grid-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .combo-grid,
+  .order-admin-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cart-layout {
+    align-items: start;
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) 360px;
+  }
+
+  .checkout-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) 360px;
+    align-items: start;
+  }
+
+  .toolbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .search-bar {
+    min-width: 320px;
+  }
+
+  .details-card {
+    display: grid;
+    grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+    align-items: center;
+  }
+
+  .form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-cards {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
